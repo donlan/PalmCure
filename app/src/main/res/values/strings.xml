@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">PalmCure</string>
+    <string name="login_username">用户名</string>
+    <string name="login_password">登录密码</string>
+    <string name="login_label_text">便捷的掌上医疗工具</string>
+    <string name="enter">进入</string>
+    <string name="login_need_register">注册</string>
+    <string name="register">注册</string>
+</resources>

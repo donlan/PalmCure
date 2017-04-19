@@ -7,9 +7,6 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
- * Created by 梁桂栋 on 2017/4/18.
- * Email: 760625325@qq.com
- * Github: github.com/donlan
  */
 
 public class Client {
@@ -19,7 +16,7 @@ public class Client {
 
     private Client() {
         retrofit = new Retrofit.Builder()
-                .baseUrl("10.158.192.124:8088/")
+                .baseUrl("http://10.165.204.54:8088/rsl/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 

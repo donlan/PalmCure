@@ -1,5 +1,4 @@
 /*
- *   Copyright 2016, donlan(梁桂栋)
  *
  *   Licensed under the Apache License, Version 2.0 (the "License");
  *   you may not use this file except in compliance with the License.
@@ -35,6 +34,7 @@ public class SplashActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        SPHelper.instance().init(getApplicationContext(),"cure");
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         if (TextUtils.isEmpty(SPHelper.instance().getString("user"))) {
             startActivity(new Intent(this, LoginActivity.class));

@@ -30,8 +30,9 @@ import butterknife.BindView;
 import butterknife.OnClick;
 import dong.lan.base.ui.BaseActivity;
 import dong.lan.base.ui.base.Config;
-import dong.lan.palmcure.MainActivity;
 import dong.lan.palmcure.R;
+import dong.lan.palmcure.activity.doctor.DoctorHomeActivity;
+import dong.lan.palmcure.activity.patient.PatientHomeActivity;
 import dong.lan.palmcure.feature.presenter.ILoginPresenter;
 import dong.lan.palmcure.feature.view.ILoginView;
 import dong.lan.palmcure.presentation.LoginPresenter;
@@ -105,7 +106,11 @@ public class LoginActivity extends BaseActivity implements ILoginView {
     }
 
     @Override
-    public void toHome() {
-        startActivity(new Intent(this, MainActivity.class));
+    public void toHome(int type) {
+        if(type == Config.TYPE_DOCTOR)
+            startActivity(new Intent(this, DoctorHomeActivity.class));
+        else
+            startActivity(new Intent(this, PatientHomeActivity.class));
+        finish();
     }
 }

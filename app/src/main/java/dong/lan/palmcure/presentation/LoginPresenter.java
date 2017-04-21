@@ -19,7 +19,9 @@
 package dong.lan.palmcure.presentation;
 
 import android.text.TextUtils;
+import android.util.Log;
 
+import dong.lan.base.ui.base.SPHelper;
 import dong.lan.palmcure.api.Client;
 import dong.lan.palmcure.api.LoginApi;
 import dong.lan.palmcure.feature.presenter.ILoginPresenter;
@@ -45,7 +47,7 @@ public class LoginPresenter implements ILoginPresenter {
     }
 
     @Override
-    public void login(String username, String password, int type) {
+    public void login(String username, String password, final int type) {
         if (TextUtils.isEmpty(username)) {
             view.toast("用户名不能为空");
             return;
@@ -57,12 +59,15 @@ public class LoginPresenter implements ILoginPresenter {
 
         LoginApi loginApi = Client.get().retrofit().create(LoginApi.class);
         Call<BaseData> callback = loginApi.login(username, password, type);
+        Log.d("TAG", "login: "+callback.request().url().toString());
         callback.enqueue(new Callback<BaseData>() {
             @Override
             public void onResponse(Call<BaseData> call, Response<BaseData> response) {
                 BaseData data = response.body();
                 if (data.code == 0) {
-                    view.toHome();
+                    SPHelper.instance().putString("user",data.data.toString());
+                    SPHelper.instance().putInt("type",type);
+                    view.toHome(type);
                 } else {
                     view.dialog("登录失败：" + data.data);
                 }
@@ -70,7 +75,7 @@ public class LoginPresenter implements ILoginPresenter {
 
             @Override
             public void onFailure(Call<BaseData> call, Throwable t) {
-                view.dialog("登录失败：" +t.getMessage());
+                view.dialog("登录异常：" +t.getMessage());
             }
         });
 

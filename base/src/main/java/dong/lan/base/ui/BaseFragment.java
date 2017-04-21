@@ -27,10 +27,6 @@ import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
 /**
- * Created by 梁桂栋 on 17-1-18 ： 下午9:52.
- * Email:       760625325@qq.com
- * GitHub:      github.com/donlan
- * description: SmartTrip
  */
 
 public class BaseFragment extends Fragment implements BaseView,DelayInitView {

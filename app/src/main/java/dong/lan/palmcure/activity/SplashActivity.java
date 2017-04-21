@@ -24,9 +24,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.view.WindowManager;
 
+import dong.lan.base.ui.base.Config;
 import dong.lan.base.ui.base.SPHelper;
-import dong.lan.palmcure.MainActivity;
 import dong.lan.palmcure.R;
+import dong.lan.palmcure.activity.doctor.DoctorHomeActivity;
+import dong.lan.palmcure.activity.patient.PatientHomeActivity;
 
 
 public class SplashActivity extends AppCompatActivity {
@@ -49,7 +51,11 @@ public class SplashActivity extends AppCompatActivity {
         @Override
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
-            startActivity(new Intent(SplashActivity.this, MainActivity.class));
+            int type = SPHelper.instance().getInt("type");
+            if(type == Config.TYPE_DOCTOR) {
+                startActivity(new Intent(SplashActivity.this, DoctorHomeActivity.class));
+            }else
+                startActivity(new Intent(SplashActivity.this, PatientHomeActivity.class));
             finish();
         }
     }

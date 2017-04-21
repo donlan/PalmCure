@@ -25,5 +25,5 @@ import dong.lan.base.ui.ProgressView;
  */
 
 public interface ILoginView extends ProgressView,IActivityFunc {
-    void toHome();
+    void toHome(int type);
 }

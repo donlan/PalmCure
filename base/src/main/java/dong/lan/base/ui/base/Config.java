@@ -19,9 +19,6 @@
 package dong.lan.base.ui.base;
 
 /**
- * Created by 梁桂栋 on 2017/4/17.
- * Email: 760625325@qq.com
- * Github: github.com/donlan
  */
 
 public final class Config {
@@ -31,11 +28,19 @@ public final class Config {
     private Config() {
         //no instance
     }
+
+
+    public static final int CONTRACT_STATUS_ADD = 0;
+    public static final int CONTRACT_STATUS_VERIFY = 1;
+    public static final int CONTRACT_STATUS_REJECT = -1;
+
     public static final int TYPE_DOCTOR = 1;
     public static final int TYPE_PATIENT = 2;
-    public static final int GUIDE_STATUS_CREATED = 0;
+    public static final int APPOINTMENT_ADD = 0;
 
-    public static final int GUIDE_STATUS_RUNNING = 1;
+    public static final int APPOINTMENT_WAIT = 1;
 
-    public static final int GUIDE_STATUS_FINISH = 2;
+    public static final int APPOINTMENT_FINISH = 2;
+
+    public static final int APPOINTMENT_REJECT = 3;
 }

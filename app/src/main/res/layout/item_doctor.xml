@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<dong.lan.base.ui.customView.RelativeCarView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="18dp"
+    app:rcv_elevation="4dp"
+    app:rcv_elevationColor="@color/colorAccent"
+    app:rcv_marginX="10dp"
+    app:rcv_marginY="10dp"
+    app:rcv_radius="4dp">
+
+    <ImageView
+        android:id="@+id/doctor_avatar"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:src="@drawable/doctor" />
+
+    <TextView
+        android:id="@+id/doctor_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="12dp"
+        android:layout_marginRight="12dp"
+        android:layout_toRightOf="@id/doctor_avatar"
+        android:textColor="@color/main_text_color"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/doctor_intro"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/doctor_name"
+        android:layout_marginLeft="12dp"
+        android:layout_marginRight="12dp"
+        android:layout_marginTop="10dp"
+        android:layout_toRightOf="@id/doctor_avatar"
+        android:textColor="@color/main_text_color"
+        android:textSize="20sp" />
+
+    <dong.lan.library.LabelTextView
+        android:id="@+id/status"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:paddingTop="4dp"
+        android:gravity="center"
+        app:radius="20dp"
+        android:textSize="16sp"
+        app:strokeWidth="1dp"
+        android:layout_alignParentRight="true"
+        app:bg_color="@color/colorPrimary"
+        android:textColor="@color/colorPrimary"
+        android:paddingBottom="4dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+</dong.lan.base.ui.customView.RelativeCarView>

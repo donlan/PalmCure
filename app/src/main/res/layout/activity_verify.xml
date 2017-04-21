@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:background="@color/colorPrimary"
+        android:layout_width="match_parent"
+        app:contentInsetStart="0dp"
+        app:titleMarginStart="20dp"
+        app:title="医生认证"
+        app:titleTextColor="@color/white"
+        android:layout_height="@dimen/action_bar_height">
+
+    </android.support.v7.widget.Toolbar>
+
+    <EditText
+        android:layout_margin="16dp"
+        android:hint="输入身份证"
+        android:id="@+id/idcard_input"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+
+    <dong.lan.library.LabelTextView
+        android:id="@+id/verify"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
+        android:layout_marginTop="8dp"
+        android:gravity="center"
+        android:paddingBottom="8dp"
+        android:paddingTop="8dp"
+        android:text="开始认证"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        app:bg_color="@color/colorPrimary"
+        app:radius="25dp"
+        />
+
+</LinearLayout>

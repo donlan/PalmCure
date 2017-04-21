@@ -30,10 +30,6 @@ import butterknife.Unbinder;
 import dong.lan.base.R;
 
 /**
- * Created by 梁桂栋 on 17-1-16 ： 下午3:36.
- * Email:       760625325@qq.com
- * GitHub:      github.com/donlan
- * description: SmartTrip
  */
 
 public class BaseActivity extends AppCompatActivity implements ProgressView {

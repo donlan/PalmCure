@@ -86,5 +86,6 @@ public class RegisterActivity extends BaseActivity implements IRegisterView {
         intent.putExtra("password",passwordET.getText().toString());
         intent.putExtra("type",typeDoctor.isChecked()?Config.TYPE_DOCTOR:Config.TYPE_PATIENT);
         startActivity(intent);
+        finish();
     }
 }

@@ -38,6 +38,7 @@ public class UserManager {
 
 
     public void logout(){
+        user = null;
         SPHelper.instance().putString("user","");
     }
 }

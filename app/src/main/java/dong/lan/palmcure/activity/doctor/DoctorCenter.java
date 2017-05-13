@@ -12,6 +12,7 @@ import android.widget.EditText;
 import dong.lan.base.ui.BaseActivity;
 import dong.lan.base.ui.Dialog;
 import dong.lan.base.ui.base.SPHelper;
+import dong.lan.base.ui.customView.CircleImageView;
 import dong.lan.library.LabelTextView;
 import dong.lan.palmcure.R;
 import dong.lan.palmcure.UserManager;
@@ -38,6 +39,7 @@ public class DoctorCenter extends BaseActivity implements View.OnClickListener, 
     private LabelTextView appointment;
     private LabelTextView questionnaire;
     private User user;
+    private CircleImageView avatar;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -45,6 +47,8 @@ public class DoctorCenter extends BaseActivity implements View.OnClickListener, 
 
         setContentView(R.layout.activity_patient_center);
 
+        avatar = (CircleImageView) findViewById(R.id.user_center_avatar);
+        avatar.setImageResource(R.drawable.doctor);
         username = (LabelTextView) findViewById(R.id.username);
         tel = (LabelTextView) findViewById(R.id.tel);
         sex = (LabelTextView) findViewById(R.id.sex);
@@ -148,7 +152,7 @@ public class DoctorCenter extends BaseActivity implements View.OnClickListener, 
         SPHelper.instance().putString("user", userJson);
         UpdateUserApi api = Client.get().retrofit().create(UpdateUserApi.class);
         Log.d("TAG", "" + SPHelper.instance().getString("user"));
-        api.update(user).enqueue(new Callback<BaseData>() {
+        api.update(userJson).enqueue(new Callback<BaseData>() {
             @Override
             public void onResponse(Call<BaseData> call, Response<BaseData> response) {
                 Log.d("TAG", "" + response.body());

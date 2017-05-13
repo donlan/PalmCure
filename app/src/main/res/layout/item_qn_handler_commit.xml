@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical">
+
+        <dong.lan.library.LabelTextView
+            android:gravity="center"
+            android:text="提交"
+            android:textSize="20sp"
+            android:id="@+id/item_pn_action"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:layout_margin="40dp"
+            android:textColor="@color/white"
+            app:bg_color="@color/colorPrimary"
+            app:radius="25dp" />
+
+</LinearLayout>

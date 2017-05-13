@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/item_qn_intro"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:padding="12dp"
+            android:textSize="18sp" />
+
+        <EditText
+            android:gravity="start"
+            android:hint="医生填写问卷报告..."
+            android:layout_marginLeft="12dp"
+            android:layout_marginRight="12dp"
+            android:id="@+id/item_qn_result"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:minHeight="100dp"
+            android:background="@drawable/rect_stroke_8"
+            android:padding="12dp"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/item_qn_score_res"
+            android:gravity="center"
+            android:layout_margin="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <dong.lan.library.LabelTextView
+            android:text="开始答题"
+            android:textSize="20sp"
+            android:gravity="center"
+            android:id="@+id/item_pn_action"
+            android:layout_width="match_parent"
+            android:paddingLeft="50dp"
+            android:paddingRight="50dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:layout_margin="40dp"
+            android:textColor="@color/white"
+            app:bg_color="@color/colorPrimary"
+            app:radius="25dp" />
+
+    </LinearLayout>
+</ScrollView>

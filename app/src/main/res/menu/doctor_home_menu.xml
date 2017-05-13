@@ -8,10 +8,15 @@
         android:orderInCategory="2"
         android:title="个人中心"
         app:showAsAction="never" />
+    <item
+        android:id="@+id/doctor_questions"
+        android:orderInCategory="3"
+        android:title="问题"
+        app:showAsAction="never" />
 
     <item
         android:id="@+id/doctor_logout"
-        android:orderInCategory="3"
+        android:orderInCategory="10"
         android:title="退出登录"
         app:showAsAction="never" />
 </menu>

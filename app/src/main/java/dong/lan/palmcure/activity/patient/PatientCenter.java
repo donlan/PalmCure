@@ -5,13 +5,15 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AlertDialog;
-import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+
+import com.blankj.ALog;
 
 import dong.lan.base.ui.BaseActivity;
 import dong.lan.base.ui.Dialog;
 import dong.lan.base.ui.base.SPHelper;
+import dong.lan.base.ui.customView.CircleImageView;
 import dong.lan.library.LabelTextView;
 import dong.lan.palmcure.R;
 import dong.lan.palmcure.UserManager;
@@ -37,13 +39,15 @@ public class PatientCenter extends BaseActivity implements View.OnClickListener,
     private LabelTextView appointment;
     private LabelTextView questionnaire;
     private User user;
+    private CircleImageView avatar;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_patient_center);
-
+        avatar = (CircleImageView) findViewById(R.id.user_center_avatar);
+        avatar.setImageResource(R.drawable.patient);
         username = (LabelTextView) findViewById(R.id.username);
         tel = (LabelTextView) findViewById(R.id.tel);
         sex = (LabelTextView) findViewById(R.id.sex);
@@ -59,7 +63,6 @@ public class PatientCenter extends BaseActivity implements View.OnClickListener,
         appointment.setOnClickListener(this);
 
         questionnaire.setOnClickListener(this);
-
 
         initView();
     }
@@ -146,11 +149,15 @@ public class PatientCenter extends BaseActivity implements View.OnClickListener,
         String userJson = Client.get().gson().toJson(user);
         SPHelper.instance().putString("user", userJson);
         UpdateUserApi api = Client.get().retrofit().create(UpdateUserApi.class);
-        Log.d("TAG", "" + SPHelper.instance().getString("user"));
-        api.update(user).enqueue(new Callback<BaseData>() {
+        api.update(userJson).enqueue(new Callback<BaseData>() {
             @Override
             public void onResponse(Call<BaseData> call, Response<BaseData> response) {
-                Log.d("TAG", "" + response.body());
+                if (response.code() == 200 && response.body().code == 0) {
+                    toast("更新信息成功");
+                } else {
+                    toast("更新用户信息失败");
+                }
+                ALog.d("TAG", "" + response.body());
             }
 
             @Override

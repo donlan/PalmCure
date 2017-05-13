@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <EditText
+        android:padding="8dp"
+        android:layout_margin="12dp"
+        android:background="@drawable/rect_stroke_8"
+        android:id="@+id/appoint_reason"
+        android:hint="填写预约理由"
+        android:gravity="start"
+        android:minHeight="100dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/appoint_time"
+        android:drawablePadding="16dp"
+        android:gravity="center_vertical"
+        android:text="设置预约时间"
+        android:drawableLeft="@drawable/ic_snooze_black_24dp"
+        android:textSize="18sp"
+        android:padding="12dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <dong.lan.library.LabelTextView
+        android:id="@+id/appoint_commit"
+        app:radius="25dp"
+        android:text="马上预约"
+        android:textSize="18sp"
+        android:gravity="center"
+        android:layout_margin="24dp"
+        app:bg_color="@color/colorPrimary"
+        android:textColor="@color/white"
+        android:layout_width="match_parent"
+        android:layout_height="50dp" />
+
+</LinearLayout>

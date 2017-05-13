@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:text="问题描述"
+            android:textSize="18sp" />
+
+        <EditText
+            android:id="@+id/question_desc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="12dp"
+            android:background="@drawable/rect_stroke_8"
+            android:minHeight="100dp"
+            android:padding="4dp" />
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:text="选项A(分值5分)"
+            android:textSize="18sp" />
+
+        <EditText
+            android:id="@+id/option_a"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="12dp"
+            android:layout_marginRight="12dp"
+            android:background="@drawable/rect_stroke_8"
+            android:hint="输入答案"
+            android:minHeight="50dp"
+            android:padding="4dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:text="选项B(分值2分)"
+            android:textSize="18sp" />
+
+        <EditText
+            android:id="@+id/option_b"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="12dp"
+            android:layout_marginRight="12dp"
+            android:background="@drawable/rect_stroke_8"
+            android:hint="输入答案"
+            android:minHeight="50dp"
+            android:padding="4dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:text="选项C(分值0分)"
+            android:textSize="18sp" />
+
+        <EditText
+            android:id="@+id/option_c"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="12dp"
+            android:layout_marginRight="12dp"
+            android:background="@drawable/rect_stroke_8"
+            android:hint="输入答案"
+            android:minHeight="50dp"
+            android:padding="4dp" />
+
+
+        <dong.lan.library.LabelTextView
+            android:id="@+id/commit"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_margin="24dp"
+            android:gravity="center"
+            android:text="提交问题"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            app:bg_color="@color/colorPrimary"
+            app:radius="25dp" />
+    </LinearLayout>
+
+</ScrollView>

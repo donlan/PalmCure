@@ -24,6 +24,9 @@ dependencies {
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
+    compile ('github.hellocsl:GalleryLayoutManager:1.0.4'){
+        exclude group: 'com.android.support', module:'recyclerview-v7'
+    }
     compile project(":base")
     compile 'com.android.support:appcompat-v7:25.3.1'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'

@@ -5,7 +5,9 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <ImageView
+
+    <dong.lan.base.ui.customView.CircleImageView
+        android:id="@+id/user_center_avatar"
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:layout_gravity="center_horizontal"
@@ -19,13 +21,15 @@
         android:layout_marginLeft="40dp"
         android:layout_marginRight="40dp"
         android:layout_marginTop="8dp"
-        android:gravity="center"
         android:paddingBottom="8dp"
         android:paddingTop="8dp"
         android:text="姓名"
+        android:gravity="start|center_vertical"
+        android:drawablePadding="24dp"
+        android:drawableLeft="@drawable/ic_user"
         android:textColor="@color/colorPrimary"
         android:textSize="20sp"
-        app:bg_color="@color/colorPrimary"
+        app:bg_color="@color/transplate"
         app:radius="20dp"
         app:strokeWidth="1dp" />
 
@@ -36,13 +40,15 @@
         android:layout_marginLeft="40dp"
         android:layout_marginRight="40dp"
         android:layout_marginTop="8dp"
-        android:gravity="center"
+        android:gravity="start|center_vertical"
+        android:drawablePadding="24dp"
+        android:drawableLeft="@drawable/ic_phone"
         android:paddingBottom="8dp"
         android:paddingTop="8dp"
         android:text="联系电话"
         android:textColor="@color/colorPrimary"
         android:textSize="20sp"
-        app:bg_color="@color/colorPrimary"
+        app:bg_color="@color/transplate"
         app:radius="20dp"
         app:strokeWidth="1dp" />
 
@@ -53,13 +59,15 @@
         android:layout_marginLeft="40dp"
         android:layout_marginRight="40dp"
         android:layout_marginTop="8dp"
-        android:gravity="center"
+        android:gravity="start|center_vertical"
+        android:drawablePadding="24dp"
+        android:drawableLeft="@drawable/ic_sex"
         android:paddingBottom="8dp"
         android:paddingTop="8dp"
         android:text="性别"
         android:textColor="@color/colorPrimary"
         android:textSize="20sp"
-        app:bg_color="@color/colorPrimary"
+        app:bg_color="@color/transplate"
         app:radius="20dp"
         app:strokeWidth="1dp" />
 
@@ -70,13 +78,15 @@
         android:layout_marginLeft="40dp"
         android:layout_marginRight="40dp"
         android:layout_marginTop="8dp"
-        android:gravity="center"
+        android:gravity="start|center_vertical"
+        android:drawablePadding="24dp"
+        android:drawableLeft="@drawable/ic_contract"
         android:paddingBottom="8dp"
         android:paddingTop="8dp"
         android:text="预约记录"
         android:textColor="@color/colorPrimary"
         android:textSize="20sp"
-        app:bg_color="@color/colorPrimary"
+        app:bg_color="@color/transplate"
         app:radius="20dp"
         app:strokeWidth="1dp" />
 
@@ -87,13 +97,15 @@
         android:layout_marginLeft="40dp"
         android:layout_marginRight="40dp"
         android:layout_marginTop="8dp"
-        android:gravity="center"
+        android:gravity="start|center_vertical"
+        android:drawablePadding="24dp"
+        android:drawableLeft="@drawable/ic_questionnaire"
         android:paddingBottom="8dp"
         android:paddingTop="8dp"
         android:text="问卷记录"
         android:textColor="@color/colorPrimary"
         android:textSize="20sp"
-        app:bg_color="@color/colorPrimary"
+        app:bg_color="@color/transplate"
         app:radius="20dp"
         app:strokeWidth="1dp" />
 

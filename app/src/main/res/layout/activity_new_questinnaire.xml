@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+
+        <EditText
+            android:id="@+id/qn_intro"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="24dp"
+            android:background="@drawable/rect_stroke_8"
+            android:gravity="start"
+            android:hint="输入问卷描述"
+            android:minHeight="100dp"
+            android:padding="8dp"
+            android:textSize="18sp" />
+
+        <dong.lan.library.LabelTextView
+            android:id="@+id/option_select"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginLeft="24dp"
+            android:layout_marginRight="24dp"
+            android:gravity="center"
+            android:text="选择问题"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            app:bg_color="@color/colorAccent"
+            app:radius="4dp" />
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="24dp"
+            android:layout_marginRight="24dp"
+            android:layout_marginTop="12dp"
+            android:text="评分等级(总得分通过评选)"
+            android:textSize="18sp" />
+
+        <RadioGroup
+            android:id="@+id/level_group"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <RadioButton
+                android:id="@+id/level_a"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="A(>=80%)"
+                android:textSize="20sp" />
+
+            <RadioButton
+                android:id="@+id/level_b"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="24dp"
+                android:layout_marginRight="24dp"
+                android:text="B(>=60%)"
+                android:textSize="20sp" />
+
+            <RadioButton
+                android:id="@+id/level_c"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="C(>=60%)"
+                android:textSize="20sp" />
+        </RadioGroup>
+
+        <dong.lan.library.LabelTextView
+            android:id="@+id/commit_qn"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginLeft="24dp"
+            android:layout_marginRight="24dp"
+            android:layout_marginTop="20dp"
+            android:gravity="center"
+            android:text="提交"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            app:bg_color="@color/colorPrimary"
+            app:radius="4dp" />
+
+
+        <TextView
+            android:id="@+id/option_res"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp"
+            android:textSize="18sp" />
+
+    </LinearLayout>
+
+</ScrollView>

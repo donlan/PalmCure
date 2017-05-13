@@ -36,20 +36,18 @@ public class DoctorHomeActivity extends BaseActivity implements SwipeRefreshLayo
     private Toolbar toolbar;
     private PatientContractAdapter adapter;
 
-    private User user ;
+    private User user;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         user = UserManager.get().currentUser();
-        if(user.verify!=1){
-            startActivityForResult(new Intent(this, VerifyActivity.class),1);
+        if (user.verify != 1) {
+            startActivityForResult(new Intent(this, VerifyActivity.class), 1);
         }
 
         setContentView(R.layout.activity_doctor_home);
         toolbar = (Toolbar) findViewById(R.id.toolbar);
-
-        toolbar.inflateMenu(R.menu.patient_home_menu);
 
         setSupportActionBar(toolbar);
 
@@ -115,35 +113,39 @@ public class DoctorHomeActivity extends BaseActivity implements SwipeRefreshLayo
 
     @Override
     public void onClick(final Contract data, int action, int position) {
-        if(data.status == Config.CONTRACT_STATUS_ADD ){
+        if (data.status == Config.CONTRACT_STATUS_ADD) {
             new Dialog(this)
                     .setMessageText("同意该患者签约请求？")
                     .setClickListener(new Dialog.DialogClickListener() {
                         @Override
                         public boolean onDialogClick(int which) {
-                            if(which == Dialog.CLICK_RIGHT){
+                            if (which == Dialog.CLICK_RIGHT) {
                                 agreeContract(data);
                             }
                             return true;
                         }
                     }).show();
+        } else if (data.status == Config.CONTRACT_STATUS_VERIFY) {
+            Intent intent = new Intent(this, DoctorPatientActivity.class);
+            intent.putExtra("id", data.patient);
+            startActivity(intent);
         }
     }
 
     private void agreeContract(Contract data) {
         BindDoctorApi api = Client.get().retrofit().create(BindDoctorApi.class);
-        api.bind(data.id,data.doctor,data.patient,Config.CONTRACT_STATUS_VERIFY)
+        api.bind(data.id, data.doctor, data.patient, Config.CONTRACT_STATUS_VERIFY)
                 .enqueue(new Callback<BaseData>() {
                     @Override
                     public void onResponse(Call<BaseData> call, Response<BaseData> response) {
-                        if(response.code() == 200){
+                        if (response.code() == 200) {
                             BaseData baseData = response.body();
-                            if(baseData.code == 0){
+                            if (baseData.code == 0) {
                                 toast("回复绑定成功");
-                            }else{
+                            } else {
                                 dialog(baseData.data.toString());
                             }
-                        }else{
+                        } else {
                             dialog("回复失败，网络连接错误");
                         }
                     }
@@ -169,6 +171,9 @@ public class DoctorHomeActivity extends BaseActivity implements SwipeRefreshLayo
             case R.id.doctor_me:
                 startActivity(new Intent(this, DoctorCenter.class));
                 break;
+            case R.id.doctor_questions:
+                startActivity(new Intent(this, QuestionListActivity.class));
+                break;
         }
 
         return false;
@@ -177,7 +182,7 @@ public class DoctorHomeActivity extends BaseActivity implements SwipeRefreshLayo
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if(resultCode == -1)
+        if (resultCode == -1)
             finish();
         super.onActivityResult(requestCode, resultCode, data);
     }

@@ -5,27 +5,9 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/toolbar"
+
+    <FrameLayout
+        android:id="@+id/container"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/action_bar_height"
-        android:background="@color/colorPrimary"
-        app:contentInsetStart="0dp"
-        app:title="我的预约"
-        app:titleMarginStart="20dp"
-        app:titleTextColor="@color/white">
-
-
-    </android.support.v7.widget.Toolbar>
-
-    <android.support.v4.widget.SwipeRefreshLayout
-        android:id="@+id/refresher"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/appointment_list"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-    </android.support.v4.widget.SwipeRefreshLayout>
+        android:layout_height="match_parent" />
 </LinearLayout>

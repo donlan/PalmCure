@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="alog-0.0.2">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.android/build-cache/f623445c9a9991894e6f8942ec3c415e1db0db0b/output/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.android/build-cache/f623445c9a9991894e6f8942ec3c415e1db0db0b/output/res" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://E:/gradle-3.4.1/caches/modules-2/files-2.1/com.blankj/alog/0.0.2/78d30f9c7592a475b78cc6c8e54a6dfa0908d588/alog-0.0.2-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

@@ -87,6 +87,13 @@ public class PatientAppointmentAdapter extends RecyclerView.Adapter<PatientAppoi
                         clickListener.onClick(contracts.get(p),0,p);
                     }
                 });
+                time.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        int p = getLayoutPosition();
+                        clickListener.onClick(contracts.get(p),1,p);
+                    }
+                });
             }
         }
     }

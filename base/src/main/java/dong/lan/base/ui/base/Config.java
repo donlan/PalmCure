@@ -36,6 +36,7 @@ public final class Config {
 
     public static final int TYPE_DOCTOR = 1;
     public static final int TYPE_PATIENT = 2;
+
     public static final int APPOINTMENT_ADD = 0;
 
     public static final int APPOINTMENT_WAIT = 1;

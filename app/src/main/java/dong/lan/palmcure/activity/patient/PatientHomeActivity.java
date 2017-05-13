@@ -115,7 +115,9 @@ public class PatientHomeActivity extends BaseActivity implements SwipeRefreshLay
     @Override
     public void onClick(Contract data, int action, int position) {
         if(data.status ==Config.CONTRACT_STATUS_VERIFY ){
-
+            Intent intent = new Intent(this,PatientDocActivity.class);
+            intent.putExtra("tid",data.doctor);
+            startActivity(intent);
         }else{
             toast("医生未回复签约");
         }

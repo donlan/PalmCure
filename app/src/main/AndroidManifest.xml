@@ -2,9 +2,11 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="dong.lan.palmcure">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
     <application
+        android:name=".App"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -18,16 +20,54 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.doctor.VerifyActivity"/>
-        <activity android:name=".activity.doctor.DoctorCenter"/>
-        <activity android:name=".activity.patient.MyAppointmentActivity"/>
-        <activity android:name=".activity.patient.PatientCenter"/>
-        <activity android:name=".activity.patient.AllDoctorActivity"/>
+        <activity
+            android:name=".activity.patient.CreateNewAppointment"
+            android:label="新建预约"
+            android:theme="@style/AppTheme" />
+        <activity android:name=".activity.doctor.VerifyActivity" />
+        <activity android:name=".activity.doctor.DoctorCenter"
+            android:label="个人中心"
+            android:theme="@style/AppTheme"
+            />
+        <activity android:name=".activity.patient.MyAppointmentActivity"
+            android:theme="@style/AppTheme"
+            android:label="我的预约"
+            />
+        <activity
+            android:name=".activity.patient.PatientCenter"
+            android:label="个人中心"
+            android:theme="@style/AppTheme" />
+        <activity android:name=".activity.patient.AllDoctorActivity" />
         <activity android:name=".activity.LoginActivity" />
         <activity android:name=".activity.RegisterActivity" />
         <activity android:name=".MainActivity" />
         <activity android:name=".activity.doctor.DoctorHomeActivity" />
-        <activity android:name=".activity.patient.PatientHomeActivity"/>
+        <activity android:name=".activity.patient.PatientHomeActivity" />
+        <activity
+            android:name=".activity.doctor.DoctorPatientActivity"
+            android:label="我的预约"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activity.patient.PatientDocActivity"
+            android:label="我的预约"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".activity.doctor.QuestionListActivity"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:label="题目列表"/>
+
+        <activity android:name=".activity.doctor.CreateQuestionnaire"
+            android:theme="@style/AppTheme"
+            android:label="新建问卷"/>
+
+        <activity android:name=".activity.doctor.CreateQuestionActivity"
+            android:theme="@style/AppTheme"
+            android:label="新建问题"/>
+
+        <activity android:name=".activity.QuestionnaireDetail"
+            android:theme="@style/AppTheme"
+            android:label="问卷详情"
+            />
+
     </application>
 
 </manifest>

@@ -19,7 +19,6 @@
 package dong.lan.palmcure.presentation;
 
 import android.text.TextUtils;
-import android.util.Log;
 
 import dong.lan.base.ui.base.SPHelper;
 import dong.lan.palmcure.api.Client;
@@ -59,17 +58,20 @@ public class LoginPresenter implements ILoginPresenter {
 
         LoginApi loginApi = Client.get().retrofit().create(LoginApi.class);
         Call<BaseData> callback = loginApi.login(username, password, type);
-        Log.d("TAG", "login: "+callback.request().url().toString());
         callback.enqueue(new Callback<BaseData>() {
             @Override
             public void onResponse(Call<BaseData> call, Response<BaseData> response) {
                 BaseData data = response.body();
-                if (data.code == 0) {
-                    SPHelper.instance().putString("user",data.data.toString());
-                    SPHelper.instance().putInt("type",type);
-                    view.toHome(type);
-                } else {
-                    view.dialog("登录失败：" + data.data);
+                if(response.code()==200) {
+                    if (data.code == 0) {
+                        SPHelper.instance().putString("user", data.data.toString());
+                        SPHelper.instance().putInt("type", type);
+                        view.toHome(type);
+                    } else {
+                        view.dialog("登录失败：" + data.data);
+                    }
+                }else{
+                    view.toast("网络异常："+response.code());
                 }
             }
 

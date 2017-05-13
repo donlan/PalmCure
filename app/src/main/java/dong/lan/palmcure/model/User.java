@@ -45,6 +45,6 @@ public class User {
             return "男";
         if(sex == 1)
             return "女";
-        return "未知";
+        return "未设置性别";
     }
 }

@@ -32,9 +32,6 @@ import retrofit2.Response;
 
 
 /**
- * Created by 梁桂栋 on 2017/4/12.
- * Email: 760625325@qq.com
- * Github: github.com/donlan
  */
 
 public class LoginPresenter implements ILoginPresenter {

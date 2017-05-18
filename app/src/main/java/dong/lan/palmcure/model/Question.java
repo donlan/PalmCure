@@ -10,9 +10,6 @@ import dong.lan.base.utils.GsonHelper;
 import dong.lan.palmcure.UserManager;
 
 /**
- * Created by 梁桂栋 on 2017/5/10.
- * Email: 760625325@qq.com
- * Github: github.com/donlan
  */
 
 public class Question {

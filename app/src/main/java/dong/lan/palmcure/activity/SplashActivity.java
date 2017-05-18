@@ -1,19 +1,3 @@
-/*
- *
- *   Licensed under the Apache License, Version 2.0 (the "License");
- *   you may not use this file except in compliance with the License.
- *   You may obtain a copy of the License at
- *
- *        http://www.apache.org/licenses/LICENSE-2.0
- *
- *   Unless required by applicable law or agreed to in writing, software
- *   distributed under the License is distributed on an "AS IS" BASIS,
- *   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- *   See the License for the specific language governing permissions and
- *   limitations under the License.
- *
- *   Email me: stonelavender@hotmail.com
- */
 
 package dong.lan.palmcure.activity;
 
@@ -37,17 +21,17 @@ import dong.lan.palmcure.activity.patient.PatientHomeActivity;
 import pub.devrel.easypermissions.EasyPermissions;
 
 
-public class SplashActivity extends AppCompatActivity implements EasyPermissions.PermissionCallbacks{
+public class SplashActivity extends AppCompatActivity implements EasyPermissions.PermissionCallbacks {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        if(EasyPermissions.hasPermissions(this, Manifest.permission.READ_EXTERNAL_STORAGE,Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
+        if (EasyPermissions.hasPermissions(this, Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
             run();
-        }else{
-            EasyPermissions.requestPermissions(this,"需要读取内存卡信息的权限",1,Manifest.permission.READ_EXTERNAL_STORAGE,Manifest.permission.WRITE_EXTERNAL_STORAGE);
+        } else {
+            EasyPermissions.requestPermissions(this, "需要读取内存卡信息的权限", 1, Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE);
         }
     }
 
@@ -58,7 +42,7 @@ public class SplashActivity extends AppCompatActivity implements EasyPermissions
             finish();
         } else {
             setContentView(R.layout.activity_splash);
-            new Handler().sendEmptyMessageDelayed(0, 1000);
+            new Handler().sendEmptyMessageDelayed(0, 2500);
         }
     }
 
@@ -90,9 +74,9 @@ public class SplashActivity extends AppCompatActivity implements EasyPermissions
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
             int type = SPHelper.instance().getInt("type");
-            if(type == Config.TYPE_DOCTOR) {
+            if (type == Config.TYPE_DOCTOR) {
                 startActivity(new Intent(SplashActivity.this, DoctorHomeActivity.class));
-            }else
+            } else
                 startActivity(new Intent(SplashActivity.this, PatientHomeActivity.class));
             finish();
         }

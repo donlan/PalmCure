@@ -3,9 +3,6 @@ package dong.lan.palmcure.model;
 import dong.lan.base.ui.base.Config;
 
 /**
- * Created by 梁桂栋 on 2017/4/20.
- * Email: 760625325@qq.com
- * Github: github.com/donlan
  */
 
 public class Appointment {

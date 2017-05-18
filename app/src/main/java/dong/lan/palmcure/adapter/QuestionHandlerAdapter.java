@@ -23,9 +23,6 @@ import dong.lan.palmcure.model.Questionnaire;
 import dong.lan.palmcure.model.Record;
 
 /**
- * Created by 梁桂栋 on 2017/5/10.
- * Email: 760625325@qq.com
- * Github: github.com/donlan
  */
 
 public class QuestionHandlerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {

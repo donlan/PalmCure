@@ -15,9 +15,6 @@ import dong.lan.palmcure.R;
 import dong.lan.palmcure.model.Appointment;
 
 /**
- * Created by 梁桂栋 on 2017/4/19.
- * Email: 760625325@qq.com
- * Github: github.com/donlan
  */
 
 public class PatientAppointmentAdapter extends RecyclerView.Adapter<PatientAppointmentAdapter.ViewHolder> {

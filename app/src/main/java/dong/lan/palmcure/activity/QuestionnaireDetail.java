@@ -27,9 +27,6 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 /**
- * Created by 梁桂栋 on 2017/5/11.
- * Email: 760625325@qq.com
- * Github: github.com/donlan
  */
 
 public class QuestionnaireDetail extends BaseActivity implements BaseItemClickListener<Record> {

@@ -15,9 +15,6 @@ import dong.lan.palmcure.R;
 import dong.lan.palmcure.model.Contract;
 
 /**
- * Created by 梁桂栋 on 2017/4/19.
- * Email: 760625325@qq.com
- * Github: github.com/donlan
  */
 
 public class PatientContractAdapter extends RecyclerView.Adapter<PatientContractAdapter.ViewHolder> {

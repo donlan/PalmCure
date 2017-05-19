@@ -19,16 +19,17 @@ public class Client {
 
     private Client() {
         OkHttpClient okHttpClient = new OkHttpClient.Builder()
-                .readTimeout(5, TimeUnit.SECONDS)
+                .readTimeout(5, TimeUnit.SECONDS) //网络请求超时设置
                 .writeTimeout(5,TimeUnit.SECONDS)
                 .connectTimeout(5,TimeUnit.SECONDS)
                 .build();
+        //配置Retrofit
         retrofit = new Retrofit.Builder()
-                .baseUrl("http://192.168.191.1:8088/rsl/")
-                .client(okHttpClient)
-                .addConverterFactory(GsonConverterFactory.create())
+                .baseUrl("http://192.168.191.1:8088/rsl/") //服务器地址
+                .client(okHttpClient) //网络访问控制
+                .addConverterFactory(GsonConverterFactory.create()) //服务器返回结果自动通过GSON解析
                 .build();
-
+        //配置GSON用来做json数据的解析
         gson = new GsonBuilder()
                 .serializeNulls()
                 .create();

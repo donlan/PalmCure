@@ -30,18 +30,21 @@ public class QuestionAdapter extends RecyclerView.Adapter<QuestionAdapter.ViewHo
     private List<Question> questions;
     private Map<String,Question> map;
 
+    //构造函数，就是初始化列表数据
     public QuestionAdapter(List<Question> questions) {
         this.questions  = new ArrayList<>(questions);
         if(MODE == MODE_SELECT)
             map = new HashMap<>();
     }
 
+    //生成布局文件，也就是控制内容怎么显示的
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         return new ViewHolder(LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.item_question, null));
     }
 
+    //将列表的数据绑定到页面上
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         Question question = questions.get(position);
@@ -65,21 +68,25 @@ public class QuestionAdapter extends RecyclerView.Adapter<QuestionAdapter.ViewHo
 
     private BaseItemClickListener<Question> clickListener;
 
+    //点击一个内容后，发送给处理者处理
     public void setClickListener(BaseItemClickListener<Question> clickListener) {
         this.clickListener = clickListener;
     }
 
+    //列表有多少内容，控制列表显示的内容个数
     @Override
     public int getItemCount() {
         return questions == null ? 0 : questions.size();
     }
 
+    //重置列表
     public void reset(List<Question> questions) {
         this.questions.clear();
         this.questions.addAll(questions);
         notifyDataSetChanged();
     }
 
+    //显示页面的空间初始化类
     class ViewHolder extends RecyclerView.ViewHolder {
         TextView desc;
         TextView option;
@@ -88,10 +95,12 @@ public class QuestionAdapter extends RecyclerView.Adapter<QuestionAdapter.ViewHo
 
         public ViewHolder(View itemView) {
             super(itemView);
+            //初始化空间
             desc = (TextView) itemView.findViewById(R.id.item_question_desc);
             option = (TextView) itemView.findViewById(R.id.item_question_key);
             answer = (TextView) itemView.findViewById(R.id.item_question_answer);
             select = (CheckBox) itemView.findViewById(R.id.item_question_select);
+            //设置点击事件
             if(clickListener!=null) {
                 itemView.setOnClickListener(new View.OnClickListener() {
                     @Override

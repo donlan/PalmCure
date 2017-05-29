@@ -1,9 +1,12 @@
 package dong.lan.palmcure.activity;
 
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.app.AlertDialog;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.View;
 
 import com.blankj.ALog;
 
@@ -15,13 +18,13 @@ import dong.lan.base.ui.base.Config;
 import dong.lan.base.utils.GsonHelper;
 import dong.lan.palmcure.R;
 import dong.lan.palmcure.UserManager;
+import dong.lan.palmcure.activity.patient.CreateNewAppointment;
 import dong.lan.palmcure.adapter.QuestionHandlerAdapter;
 import dong.lan.palmcure.api.Client;
 import dong.lan.palmcure.api.QuestionnaireApi;
 import dong.lan.palmcure.model.BaseData;
 import dong.lan.palmcure.model.Questionnaire;
 import dong.lan.palmcure.model.Record;
-import github.hellocsl.layoutmanager.gallery.GalleryLayoutManager;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -39,27 +42,8 @@ public class QuestionnaireDetail extends BaseActivity implements BaseItemClickLi
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_questionnaire_detail);
-
         container = (RecyclerView) findViewById(R.id.container);
-
-
-        GalleryLayoutManager layoutManager = new GalleryLayoutManager(GalleryLayoutManager.HORIZONTAL);
-        layoutManager.attach(container);
-
-        layoutManager.setOnItemSelectedListener(new GalleryLayoutManager.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(RecyclerView recyclerView, View item, int position) {
-
-            }
-        });
-
-        layoutManager.setItemTransformer(new GalleryLayoutManager.ItemTransformer() {
-            @Override
-            public void transformItem(GalleryLayoutManager layoutManager, View item, float fraction) {
-
-            }
-        });
-
+        container.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
         getData();
     }
 
@@ -100,13 +84,33 @@ public class QuestionnaireDetail extends BaseActivity implements BaseItemClickLi
 
     @Override
     public void onClick(Record data, int action, int position) {
-        if (data == null) {
-            if (UserManager.get().currentUser().type == Config.TYPE_DOCTOR)
+        ALog.d(data);
+        ALog.d(action);
+        ALog.d(position);
+        if (action == 1) {
+            if (UserManager.get().currentUser().type == Config.TYPE_DOCTOR && questionnaire.status == Questionnaire.STATUS_TESING) {
+                questionnaire.status = Questionnaire.STATUS_DONE;
                 commit(questionnaire, null);
-            else
+            } else if (questionnaire.status == Questionnaire.STATUS_TESING && adapter.getLevel() < questionnaire.level) {
+                new AlertDialog.Builder(this)
+                        .setMessage("患者问卷答题结果不合格，是否向患者发起再诊预约？")
+                        .setPositiveButton("是的", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                Intent intent = new Intent(QuestionnaireDetail.this, CreateNewAppointment.class);
+                                intent.putExtra("tid", UserManager.get().currentUser().id);
+                                intent.putExtra("uid", questionnaire.patient);
+                                startActivity(intent);
+                            }
+                        })
+                        .setNegativeButton("否", null)
+                        .show();
+
+            } else
                 container.scrollToPosition(1);
-        } else {
-            if (position == adapter.getItemCount() - 1) {
+        } else if (action == 2) {
+            if (position == adapter.getItemCount() - 1 && UserManager.get().currentUser().type == Config.TYPE_PATIENT) {
+                questionnaire.status = Questionnaire.STATUS_TESING;
                 commit(questionnaire, questions);
             } else {
                 container.scrollToPosition(position + 1);

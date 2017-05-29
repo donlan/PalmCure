@@ -55,6 +55,7 @@ public class PatientDocActivity extends AppCompatActivity {
     private void createNewAppointment(String tid) {
         Intent intent = new Intent(this, CreateNewAppointment.class);
         intent.putExtra("tid", tid);
+        intent.putExtra("uid",UserManager.get().currentUser().id);
         startActivity(intent);
     }
 

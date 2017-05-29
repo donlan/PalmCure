@@ -6,10 +6,6 @@ import dong.lan.base.ui.base.Config;
  */
 
 public class Appointment {
-    public static final int STATUS_NEW = 0;
-    public static final int STATUS_TEST = 1;
-    public static final int STATUS_REJECT = 2;
-    public static final int STATUS_DONE = 3;
     public String id;
     public String doctor;
     public String patient;

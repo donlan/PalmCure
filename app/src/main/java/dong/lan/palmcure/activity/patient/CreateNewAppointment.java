@@ -7,6 +7,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import dong.lan.base.ui.BaseActivity;
+import dong.lan.base.ui.base.Config;
 import dong.lan.base.utils.DateUtils;
 import dong.lan.library.LabelTextView;
 import dong.lan.palmcure.R;
@@ -29,13 +30,15 @@ public class CreateNewAppointment extends BaseActivity implements DateTimePicker
     private TextView time;
     private LabelTextView commit;
     private long timeMills;
-    private String tid;
+    private String tid;  //医生id
+    private String uid; //患者id
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_appointment);
         tid = getIntent().getStringExtra("tid");
+        uid = getIntent().getStringExtra("uid");
         initView();
     }
 
@@ -63,14 +66,14 @@ public class CreateNewAppointment extends BaseActivity implements DateTimePicker
     private void newAppointment() {
         final String reasonStr = reason.getText().toString();
         Appointment appointment = new Appointment();
-        appointment.status = Appointment.STATUS_NEW ;
+        appointment.status = Config.APPOINTMENT_ADD ;
         appointment.booktime = DateUtils.getTime(timeMills,"yyyy-MM-dd HH:mm:ss");
         appointment.doctor = tid;
         appointment.reason = reasonStr;
-        appointment.patient = UserManager.get().currentUser().id;
+        appointment.patient = uid;
         Client.get().retrofit().create(AppointmentsApi.class)
                 .create(tid,UserManager.get().currentUser().id,reasonStr,
-                        DateUtils.getTime(timeMills,"yyyy-MM-dd HH:mm:ss"),Appointment.STATUS_NEW)
+                        DateUtils.getTime(timeMills,"yyyy-MM-dd HH:mm:ss"),appointment.status)
                 .enqueue(new Callback<BaseData>() {
                     @Override
                     public void onResponse(Call<BaseData> call, Response<BaseData> response) {

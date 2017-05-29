@@ -9,6 +9,8 @@ import android.widget.EditText;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
+import com.blankj.ALog;
+
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
@@ -114,13 +116,19 @@ public class CreateQuestionnaire extends BaseActivity {
         }
         int level = 0;
         int id = levelGroup.getCheckedRadioButtonId();
-        if (id == R.id.option_a) {
+        if (id == R.id.level_a) {
             level = 8;
-        } else if (id == R.id.option_b) {
+        } else if (id == R.id.level_b) {
             level = 6;
-        } else if (id == R.id.option_c) {
+        } else if (id == R.id.level_c) {
             level = 5;
         }
+        ALog.d(Client.get().gson().toJson(UserManager.get().currentUser().id));
+        ALog.d(Client.get().gson().toJson(patientId));
+        ALog.d(level);
+        ALog.d(introStr);
+        ALog.d(GsonHelper.getInstance().toJson(qid));
+
         Client.get().retrofit().create(QuestionnaireApi.class)
                 .createQuestionnaire(UserManager.get().currentUser().id,
                         patientId, level, introStr,
@@ -142,6 +150,7 @@ public class CreateQuestionnaire extends BaseActivity {
 
                     @Override
                     public void onFailure(Call<BaseData> call, Throwable t) {
+
                         toast("网络失败：" + t.getMessage());
                         t.printStackTrace();
                     }

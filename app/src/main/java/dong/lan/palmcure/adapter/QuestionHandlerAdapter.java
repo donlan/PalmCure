@@ -15,6 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import dong.lan.base.BaseItemClickListener;
+import dong.lan.base.ui.base.Config;
 import dong.lan.library.LabelTextView;
 import dong.lan.palmcure.R;
 import dong.lan.palmcure.UserManager;
@@ -40,6 +41,10 @@ public class QuestionHandlerAdapter extends RecyclerView.Adapter<RecyclerView.Vi
         this.questions = new ArrayList<>(questions);
         this.questionnaire = questionnaire;
         calScore();
+    }
+
+    public int getLevel() {
+        return ((int) score * 10 / count);
     }
 
     public void calScore() {
@@ -69,12 +74,7 @@ public class QuestionHandlerAdapter extends RecyclerView.Adapter<RecyclerView.Vi
             QNHolder holder = (QNHolder) viewHolder;
             holder.intro.setText(questionnaire.intro);
 
-            if (questionnaire.doctor.equals(UserManager.get().currentUser().id)) {
-                holder.result.setEnabled(false);
-                holder.action.setText("查看问题");
-            } else {
-                holder.result.setEnabled(false);
-            }
+            holder.action.setText("查看问题");
 
             if (TextUtils.isEmpty(questionnaire.result)) {
                 holder.result.setFocusable(true);
@@ -85,13 +85,17 @@ public class QuestionHandlerAdapter extends RecyclerView.Adapter<RecyclerView.Vi
                 } else if (questionnaire.status == 1) {
                     holder.action.setText("开始答题");
                 } else if (questionnaire.status == 2) {
-                    holder.action.setText("已经提交问卷");
+                    holder.result.setFocusable(false);
+                    int level = ((int) score * 10 / count);
+                    if (questionnaire.level < level) {
+                        holder.action.setText("问卷不合格");
+                    } else {
+                        holder.action.setText("问卷答题合格");
+                    }
+                    updateScore();
                 }
-
-                holder.result.setFocusable(false);
                 holder.result.setText(questionnaire.getResultString());
             }
-            updateScore();
         } else {
             ViewHolder holder = (ViewHolder) viewHolder;
             Record record = questions.get(position - 1);
@@ -99,7 +103,7 @@ public class QuestionHandlerAdapter extends RecyclerView.Adapter<RecyclerView.Vi
             holder.desc.setText(question.qdescribe);
 
             if (position == getItemCount() - 1) {
-                if (questionnaire.status != Questionnaire.STATUS_DONE) {
+                if (UserManager.get().currentUser().type == Config.TYPE_PATIENT && questionnaire.status != Questionnaire.STATUS_DONE) {
                     holder.action.setText("提交");
                 } else {
                     holder.action.setText("没有更多题目了");

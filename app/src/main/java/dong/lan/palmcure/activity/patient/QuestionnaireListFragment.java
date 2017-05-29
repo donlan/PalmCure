@@ -55,7 +55,6 @@ public class QuestionnaireListFragment extends BaseFragment implements SwipeRefr
             refreshLayout.setOnRefreshListener(this);
             adapter = new QuestionnaireAdapter(null);
             list.setAdapter(adapter);
-            getData();
         }
         return content;
     }
@@ -99,6 +98,11 @@ public class QuestionnaireListFragment extends BaseFragment implements SwipeRefr
         });
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        onRefresh();
+    }
 
     @Override
     public void onClick(Questionnaire data, int action, int position) {

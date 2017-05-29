@@ -125,12 +125,12 @@ public class AppointmentFragment extends BaseFragment implements SwipeRefreshLay
                         .setClickListener(new Dialog.DialogClickListener() {
                             @Override
                             public boolean onDialogClick(int which) {
-                                data.status = which == Dialog.CLICK_RIGHT ? Appointment.STATUS_TEST : Appointment.STATUS_REJECT;
+                                data.status = which == Dialog.CLICK_RIGHT ? Config.APPOINTMENT_WAIT : Config.APPOINTMENT_REJECT;
                                 updateAppointment(data);
                                 return true;
                             }
                         }).show();
-            } else if (action == 1 && data.status != Appointment.STATUS_DONE) {
+            } else if (action == 1 && data.status != Config.APPOINTMENT_FINISH) {
                 new AlertDialog.Builder(getContext())
                         .setTitle("更改预约时间")
                         .setMessage("当前时间不符合，请求更新预约时间？")
